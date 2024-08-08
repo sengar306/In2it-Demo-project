@@ -1,0 +1,59 @@
+.content {
+    position: relative; /* Ensure main content is relative for overlay positioning */
+    z-index: 1; /* Ensure main content is above overlay */
+    margin-bottom: 20px;
+  }
+  
+  .overlay {
+    position: absolute; /* Fixed position to cover the entire viewport */
+    top: 0;
+    left: 500px;
+    width: 200px;
+    /* height: 100%; */
+    /* background-color: rgba(0, 0, 0, 0.5);  */
+    z-index: 1000; /* Ensure overlay is above main content */
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+  }
+  .list-group {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .list-group-item {
+    display: flex;
+    align-items: center; /* Align items vertically center */
+    justify-content: space-between; /* Distribute items evenly */
+    padding: 10px; /* Adjust padding as needed */
+  }
+  
+  .eye-icon {
+    margin-left: 10px; /* Adjust margin between text and icon */
+    vertical-align: middle; /* Align icon vertically middle */
+  }
+  
+  
+  .panel {
+    position:absolute;
+    top: 208px;
+    right: -1336px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    /* margin-left: 1300px;
+    margin-bottom: 374px; */
+  }
+  
+  /* Optional styles to improve panel appearance */
+  .panel h2 {
+    margin-top: 0;
+  }
+  .panel button {
+    margin-top: 10px;
+  }
+  .hide{
+    display: none;
+  }
+  

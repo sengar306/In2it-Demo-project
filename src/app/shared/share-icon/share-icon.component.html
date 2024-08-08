@@ -1,0 +1,8 @@
+
+ <div><i-feather name="trash-2" (click)=" onDeleteClicked()" *ngIf="!params.data.edit &&  !params.data.addMode" ></i-feather>
+ <i-feather name="Edit" (click)="onEditClicked()" *ngIf="!params.data.edit && ! params.data.addMode"></i-feather>
+</div>
+<div >
+    <i-feather name="check-circle"*ngIf="params.data.edit || params.data.addMode" (click)="saveEditData()" style="color: green;"></i-feather>
+    <i-feather name="x-circle" *ngIf="params.data.edit ||  params.data.addMode" (click)="closeEdit()" style="color: red"></i-feather>
+</div>

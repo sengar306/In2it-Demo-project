@@ -1,0 +1,202 @@
+<h1>MY TASK</h1>
+<div style="border-bottom: 2px solid blue"></div>
+<div class="card-container">
+  <div class="card">
+    <i-feather class="icon" name="user-check"></i-feather>Assigned to me
+  </div>
+  <div class="card"><i-feather name="align-justify"></i-feather>In queue</div>
+  <div class="card"><i-feather name="clock"></i-feather>Overdue</div>
+  <div class="card"><i-feather name="star"></i-feather>priority</div>
+</div>
+<div class="task-list">
+  <h1>TASK LIST</h1>
+
+  <div class="add-task-button">
+    <div *ngIf="!isToggled">
+      <button (click)="toggle()">ADD NEW TASK</button>
+    </div>
+  </div>
+</div>
+
+<div class="toggle-container">
+  <div class="content" *ngIf="isToggled">
+    <div class="add-product">
+      <h1>Add new Task</h1>
+      <div class="form-text text-danger" *ngIf="isValid">form is invalid</div>
+      <form
+        class="common-form"
+        [formGroup]="taskForm"
+        (ngSubmit)="saveFormData()"
+      >
+        <input
+          class="form-input"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+          type="text"
+          formControlName="ID"
+          placeholder="Enter ID"
+        />
+
+        <div
+          class="form-text text-danger"
+          *ngIf="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+        >
+          ID is required
+        </div>
+        <input
+          class="form-input"
+          type="text"
+          formControlName="Task"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+          placeholder="Enter Task"
+        />
+        <div
+          class="form-text text-danger"
+          *ngIf="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+        >
+          Task is required
+        </div>
+        <input
+          class="form-input"
+          type="text"
+          formControlName="workflow"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+          placeholder="Enter work flow"
+        />
+        <div
+          class="form-text text-danger"
+          *ngIf="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+        >
+          workflow is required
+        </div>
+        <input
+          class="form-input"
+          type="date"
+          formControlName="startdate"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+          placeholder="Start Date"
+        />
+        <div
+          class="form-text text-danger"
+          *ngIf="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+        >
+          Startdate is required
+        </div>
+
+        <input
+          class="form-input"
+          type="date"
+          formControlName="duedate"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+          placeholder="Due data"
+        />
+        <div
+          class="form-text text-danger"
+          *ngIf="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+        >
+          duedate is required
+        </div>
+        <input
+          class="form-input"
+          type="text"
+          formControlName="status"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid &&
+            (taskForm.get('ID')?.dirty || taskForm.get('ID')?.touched)
+          "
+          placeholder="priority"
+        />
+        <button class="form-button">Add Task</button>
+      </form>
+    </div>
+  </div>
+  <div class="content" *ngIf="isEdit">
+    <div class="add-product">
+      <h1>Edit Task</h1>
+      <form
+        class="common-form"
+        [formGroup]="taskForm"
+        (ngSubmit)="taskForm && editData(taskForm.get('ID')?.value)"
+      >
+        <input
+          class="form-input"
+          type="text"
+          formControlName="ID"
+          placeholder="Enter ID"
+          [class.invalid]="
+            taskForm.get('ID')?.invalid || taskForm.get('ID')?.touched
+          "
+        />
+        <input
+          class="form-input"
+          type="text"
+          formControlName="Task"
+          placeholder="Enter Task"
+        />
+        <input
+          class="form-input"
+          type="text"
+          formControlName="workflow"
+          placeholder="Enter work flow"
+        />
+        <input
+          class="form-input"
+          type="date"
+          formControlName="startdate"
+          placeholder="Start Date"
+        />
+        <input
+          class="form-input"
+          type="date"
+          formControlName="duedate"
+          placeholder="Due data"
+        />
+        <input
+          class="form-input"
+          type="text"
+          formControlName="status"
+          placeholder="priority"
+        />
+        <button class="form-button">Save Task</button>
+      </form>
+    </div>
+  </div>
+
+  <div [ngStyle]="{ width: isToggled ? '70%' : '100%' }">
+    <app-table
+      [colDefs]="colDefs"
+      [rowData]="rowData"
+      [gridOptions]="gridOptions"
+    ></app-table>
+  </div>
+
+ 

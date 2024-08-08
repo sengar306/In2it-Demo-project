@@ -1,0 +1,471 @@
+<div style="background-color: rgb(158, 129, 129)">
+  <nav class="navbar navbar-expand-lg bg-body-">
+    <div class="container-fluid">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li ngbDropdown class="list-unstyled">
+            <a
+              href
+              (click)="(false)"
+              class="nav-link px-3 text-"
+              ngbDropdownToggle
+            >
+              <i-feather name="plus"></i-feather> Add New Item
+            </a>
+            <div ngbDropdownMenu>
+              <button ngbDropdownItem (click)="toggle('', '', '')">
+                Single Contact
+              </button>
+              <div class="dropdown-divider"></div>
+              <button ngbDropdownItem>Bulk Upload</button>
+            </div>
+          </li>
+          <button
+            [disabled]="!able"
+            (click)="editFormOpen(viewData, viewIndex, checkboxData)"
+            style="background-color: whitesmoke"
+          >
+            <li class="nav-item" [ngClass]="{ 'important-item': able }">
+              <i-feather
+                name="edit"
+                style="color: green"
+                *ngIf="checkedCount < 1"
+              ></i-feather>
+            </li>
+          </button>
+          <li class="nav-item">
+            <button (click)="delete(allSecterdRows)">
+              <i-feather name="trash-2"></i-feather>
+            </button>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-blue" aria-disabled="true" href="#"
+              >Import</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+</div>
+<div style="display: flex">
+  <div style="width: 100%; height: 10%">
+    <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+      <div class="container-fluid">
+        <div class="row flex-nowrap">
+          <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary">
+            <div
+              class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+            >
+              <ul
+                class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                id="menu"
+              >
+                <li>
+                  <i class="fs-4 bi-table"></i>
+                  <span class="ms-1 d-none d-sm-inline">Lists</span>
+                </li>
+                <li>
+                  <a>
+                    <i class="fs-4 bi-table"></i>
+                    <span class="ms-1 d-none d-sm-inline"
+                      ><h2>
+                        <a (click)="showAllContact()" class="organization-link"
+                          >All Contact</a
+                        
+                        >
+                      </h2>
+                      <h4>{{totalCount}} Contacts</h4></span
+                    >
+                    <!-- <h4>{{loopCount }}contacts</h4> -->
+                  </a>
+                </li>
+
+                <li>
+                  <a class="nav-link px-0 align-middle">
+                    <i class="fs-4 bi-table"></i>
+                    <span class="ms-1 d-none d-sm-inline">
+                      <input
+                        class="form-control me-2"
+                        type="search"
+                        placeholder="Search"
+                        aria-label="Search"
+                        (keyup)="searchOrg($event)" /></span
+                  ></a>
+
+                  <div *ngFor="let i of allContact" >
+                    <div style="width:250px" [ngClass]="{'white-background': isActive && sorted === i.organization}">
+                    <h6 >
+                      <a 
+                        class="organization-link"
+                        (click)="sortedContact(i.organization)"
+                        >{{ i.organization }}</a
+                      >
+                    </h6>
+                    <h6 style="color:black;">{{ i.contact.length }}contacts</h6>
+                  </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col py-3">
+            <div class="col-md-12">
+              <div class="d-flex justify-content-between align-items-right">
+                <h1>All contact List</h1>
+             
+                <div class="search-container">
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    class="search-bar"
+                    (keyup)="search($event)"
+                  />
+                </div>
+              </div>
+      <app-table (gotocomponent)="goToComponent2($event)" [colDefs]="colDefs" [rowData]="rowData"   (checkBoxEmitter)="onCheckboxChange($event.id,$event.id,$event.id,$event)" [gridOptions]="gridOptions"></app-table>
+
+              <!-- <div class="content">
+                <div style="overflow-x: auto"></div>
+                <table
+                  style="width: 100%; border-collapse: collapse"
+                  class="table"
+                >
+                  <thead>
+                    <tr>
+                      <th scope="col">
+                        <input
+                          type="checkbox"
+                          [(ngModel)]="selectAll"
+                          (change)="allCheckBox()"
+                        />
+                      </th>
+
+                      <th scope="col">organization</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Role</th>
+                      <th scope="col">phone</th>
+                      <th scope="col">email</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <ng-container
+                      *ngFor="let data of filtercontact; let j = index"
+                    >
+                      <tr *ngFor="let contact of data.contact; let i = index">
+                        <td>
+                          <input
+                            type="checkbox"
+                            [id]="'checkbox-' + i"
+                            (change)="
+                              onCheckboxChange($event, i, data, contact)
+                            "
+                            [(ngModel)]="contact.checked"
+                          />
+                        </td>
+                        <td>
+                          <a
+                            class="organization-link"
+                            (click)="goToComponent2(data, data.id)"
+                            >{{ data.organization }}</a
+                          >
+                        </td>
+                        <td>
+                          <a
+                            class="organization-link"
+                            (click)="viewFormOpen(data, i, contact)"
+                            >{{ contact.name }}</a
+                          >
+                        </td>
+                        <td>{{ contact.role }}</td>
+                        <td>{{ contact.phone }}</td>
+                        <td>{{ contact.email }}</td>
+                      </tr>
+                    </ng-container>
+                  </tbody>
+                </table>
+              </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </ul>
+    <div></div>
+  </div>
+
+  <div>
+    <div class="card" *ngIf="toogle">
+      <div><i-feather name="user"></i-feather></div>
+      <div>
+        <i-feather
+          (click)="Edit()"
+          name="edit"
+          style="color: rgb(216, 10, 10)"
+        ></i-feather>
+      </div>
+      <h1>organization:{{ viewData.org }}</h1>
+      <h2>Namw:{{ viewData.name }}</h2>
+      <h2>Phone:{{ viewData.phone }}</h2>
+      <h3>email:{{ viewData.email }}</h3>
+      <h4>Role:{{ viewData.role }}</h4>
+      <br />
+      <h3></h3>
+      <button style="margin-top: 307px" (click)="close()">Close</button>
+    </div>
+  </div>
+  <div *ngIf="editToggle" class="card" style="width: 500px;margin-top: 59px">
+    <!-- form -->
+    <h1>{{ formheading }}</h1>
+    <form [formGroup]="profileForm">
+      <div class="d-flex py-2">
+        <div class="form-group d-flex">
+          <label for="name" class="mx-2"> Name:</label>
+          <input
+            type="text"
+            class="form-control mx-2"
+            placeholder="First Name"
+            formControlName="name"
+            required
+            [class.invalid]="
+              profileForm.get('name')?.invalid &&
+              (profileForm.get('name')?.dirty ||
+                profileForm.get('name')?.touched)
+            "
+          />
+          <input
+            type="text"
+            class="form-control mx-2"
+            placeholder="Last Name"
+            formControlName="lastName"
+            required
+          />
+        </div>
+      </div>
+
+      <div
+        *ngIf="
+          profileForm.get('name')?.invalid &&
+          (profileForm.get('name')?.dirty || profileForm.get('name')?.touched)
+        "
+      >
+        <div
+          *ngIf="profileForm.get('name')?.errors?.['required']"
+          class="text-danger"
+        >
+          First name is required
+        </div>
+      </div>
+      <div class="d-flex">
+        <label for=""> Organization:</label>
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="organization"
+          [class.invalid]="
+            profileForm.get('organization')?.invalid &&
+            (profileForm.get('organization')?.dirty ||
+              profileForm.get('ID')?.touched)
+          "
+        >
+          <option selected>select</option>
+          <ng-container *ngFor="let org of allContact">
+            <option [value]="org.organization">{{ org.organization }}</option>
+          </ng-container>
+        </select>
+      </div>
+      <div class="d-flex py-2">
+        <label for="email" class="mx-2">Email:</label>
+        <input
+          type="email"
+          class="form-control"
+          formControlName="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+
+      <div
+        *ngIf="
+          profileForm.get('email')?.invalid &&
+          (profileForm.get('email')?.dirty || profileForm.get('email')?.touched)
+        "
+      >
+        <div
+          *ngIf="profileForm.get('email')?.errors?.['required']"
+          class="text-danger"
+        >
+          Email is required
+        </div>
+      </div>
+
+      <div class="new-medium mt-3">
+        <div class="row">
+          <div class="co">
+            <div class="d-flex py-2">
+              <div class="form-group d-flex justify-content-between">
+                <label class="mr-4">Phone:</label>
+                <select class="form-select px-2 mx-2">
+                  <option>+91</option>
+                  <option>+92</option>
+                </select>
+                <input
+                  type="text"
+                  placeholder="Number"
+                  class="form-control"
+                  required
+                  formControlName="phone"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        *ngIf="
+          profileForm.get('phone')?.invalid &&
+          (profileForm.get('phone')?.dirty || profileForm.get('phone')?.touched)
+        "
+      >
+        <div
+          *ngIf="profileForm.get('phone')?.errors?.['required']"
+          class="text-danger"
+        >
+          phone is required
+        </div>
+      </div>
+      <div class="py-2" formArrayName="another">
+        <div
+          *ngFor="let phone of mediumFormArray.controls; let i = index"
+          [formGroupName]="i"
+          class="d-flex phone-field"
+        >
+          <label class="mr">ANOTHER</label>
+          <select formControlName="type" class="form-select px-2 mx-2">
+            <option selected>facebook</option>
+            <option selected>whatsapp</option>
+            <option selected>twitter</option>
+          </select>
+
+          <input
+            type="text"
+            formControlName="number"
+            placeholder="enter the id"
+            class="form-control"
+            required
+          />
+          <i-feather
+            name="trash-2"
+            class="delete"
+            (click)="removePhone(i)"
+          ></i-feather>
+          <button
+            type="button"
+            class="btn btn-danger btn-sm"
+            (click)="removePhone(i)"
+          >
+            Remove
+          </button>
+        </div>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm mt-2"
+          (click)="addPhone()"
+        >
+          + Add Another Medium
+        </button>
+      </div>
+
+    
+
+      <div class="d-flex">
+        <label>Roles:</label>
+        <select
+          class="form-select px-2 mx-2"
+          formControlName="role"
+          aria-label="Default select example"
+        >
+          <ng-container *ngFor="let data of allContact">
+            <ng-container
+              *ngIf="
+                profileForm.get('organization')?.value === data.organization
+              "
+            >
+              <ng-container *ngFor="let contact of data.contact; let i = index">
+                <ng-container *ngIf="formheading === 'ADD CONTACT'">
+                  <option
+                    *ngIf="contact.role !== 'manager'"
+                    [value]="contact.role"
+                  >
+                    {{ contact.role }}
+                  </option>
+                </ng-container>
+                <ng-container *ngIf="formheading === 'EDIT CONTACT'">
+                  <option [value]="contact.role">
+                    {{ contact.role }}
+                  </option>
+                </ng-container>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </select>
+      </div>
+      <div class="d-flex py-2">
+        <label class="mr-4"> Additional Roles:</label>
+        <input
+          type="text"
+          class="form-control"
+          formControlName="additionalRoles"
+          placeholder="Enter Details"
+          required
+        />
+      </div>
+      <div class="py-2">
+        <label class="mr-4">Remark:</label>
+        <textarea
+          class="form-control"
+          formControlName="remark"
+          placeholder="Add Details"
+        ></textarea>
+      </div>
+      <div class="py-3">
+        <button type="button" class="btn btn-primary btn-sm" (click)="close()">
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-primary btn-sm mx-3"
+          (click)="profileForm.reset()"
+        >
+          Clear Info
+        </button>
+        <button
+          type="submit"
+          class="btn btn-primary btn-sm"
+          (click)="addData()"
+          *ngIf="formheading === 'ADD CONTACT'"
+        >
+          Save
+        </button>
+        <button
+         
+          class="btn btn-primary btn-sm"
+          (click)="editData(profileForm)"
+          *ngIf="formheading === 'EDIT CONTACT'"
+        >
+          Edit
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

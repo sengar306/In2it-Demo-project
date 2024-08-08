@@ -1,0 +1,42 @@
+
+
+  <!-- Main content (ag-grid-angular) -->
+  <ag-grid-angular
+    class="ag-theme-alpine"
+    style="height: 700px"
+    [gridOptions]="gridOptions"
+    [rowData]="rowData"
+    [pagination]="true"
+    [editType]="editType"
+    [paginationPageSize]="15"
+    [columnDefs]="colDefs"
+    (cellClicked)="onCellClicked($event)"
+    (selectionChanged)="onCheckboxSelect($event)"
+    [rowSelection]="'multiple'"
+    (gridReady)="onGridReady($event)"
+
+  
+  >
+  </ag-grid-angular>
+
+
+<!-- Overlay panel -->
+<div class="overlay" *ngIf="panelOpen">
+  <div class="panel">
+    <ul class="list-group" >
+      <ng-container *ngFor="let coldef of clonedColdef; let idx = index "      >
+        <li class="list-group-item">
+          <span>{{ coldef.headerName }}</span>
+          <!-- <i-feather name="eye" class="eye-icon" (click)="eyeClose(coldef)" *ngIf="!coldef.hide"></i-feather>
+          <i-feather name="eye-off"(click)="eyeOpen(coldef)"   *ngIf="coldef.hide"></i-feather> -->
+          <i-feather   [name]="!coldef.hide?'eye':'eye-off'" (click)="isHide(coldef)"></i-feather>
+          <!-- <i-feather [name]="icon(coldef)" ></i-feather> -->
+          
+        </li>
+      </ng-container>
+    </ul>
+  </div>
+</div>
+
+<!-- Search input and settings icon -->
+

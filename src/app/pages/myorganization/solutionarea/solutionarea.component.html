@@ -1,0 +1,71 @@
+<form [formGroup]="myform" (ngSubmit)="submit()">
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">Email address</label>
+    <input
+      type="email"
+      class="form-control"
+      id="exampleInputEmail1"
+      aria-describedby="emailHelp"
+      formControlName="email"
+    />
+    <small
+      class="text-danger"
+      *ngIf="!myform.get('email')?.valid && myform.get('email')?.touched"
+    >
+      enter the valid email</small
+    >
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label">username</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username "
+      name="username"
+      formControlName="username"
+    />
+    <!-- <span *ngIf="myform.get('username')?.touched && 
+    myform.get('username')hasError('required')">this is required</span>
+    <span *ngIf="myform.get('username')?.touched && 
+    myform.get('username')hasError('nameisnotallowed')">this isnameisnotallowed required</span> -->
+    <!-- <span *ngIf="myform.get('username')?.errors['required']"> this is required</span> -->
+    <!-- <span
+      *ngIf="
+        myform.get('username')?.hasError('required') &&
+        myform.get('username')?.touched
+      "
+      >Username is required.</span
+    >   
+    <span *ngIf="myform.get('username')?.hasError('nameisnotallowed')"
+      >Username is not allowed.</span
+    > -->
+   <span *ngIf="myform.get('username')?.['errors']?.['nameisnotallowed'] ">USER already exist</span>
+   <span *ngIf="myform.get('username')?.['errors']?.['required'] && myform.get('username')?.touched ">Mandatory field</span>
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="exampleInputPassword1"
+      formControlName="password"
+    />
+  </div>
+  <div class="mb-3 form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+    <label class="form-check-label" for="exampleCheck1">Check me out</label>
+  </div>
+  <div>
+    <!-- <button (click)="onAddskill()" class="btn btn-primary">Submit</button> -->
+    <!-- <div
+      formArrayName="skills"
+      *ngFor="let i of myform.get('skills')?.controls; let i = index"
+    >
+      <div>
+        <input [formControlName]="i" type="text" />
+      </div>
+    </div> -->
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

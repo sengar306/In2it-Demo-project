@@ -1,0 +1,111 @@
+.organization-link {
+    color: blue; /* Change the color to your desired link color */
+    text-decoration: underline; /* Add underline to mimic link style */
+    cursor: pointer; /* Change cursor to pointer when hovering over the link */
+  }
+  
+form {
+  padding-top: 1rem;
+}
+
+label {
+  display: block;
+  margin: .5em 0;
+  font-weight: bold;
+}
+
+
+    .input-field {
+        width: 200px;
+        margin-right: 10px;
+        border-radius: 5px; /* Adjust the radius value as needed */
+        border: 1px solid #ccc; /* Add border for input fields */
+        padding: 5px; /* Optional: Add padding for better appearance */
+    }
+/* Style for the form container */
+.form-container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for headings */
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Style for input fields and select boxes */
+.input-field,
+select {
+  width: calc(100% - 10px);
+  margin-bottom: 10px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Style for buttons */
+button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: #fff;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Style for button container */
+.button-container {
+  margin-top: 20px;
+}
+.dropdown-toggle::after {
+  display: none;
+}
+
+/* Optional: Add more styling as needed */
+.card {
+  margin-right: 16px;
+  height: 707px;
+  width: 350px;
+
+  background-color: #ffffff;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-top: 92px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+.important-item {
+  background-color: black;
+  color: white;
+}
+.invalid input.form-input {
+  border: 1px solid red;
+}
+.white-background {
+  background-color: #ffffff; /* White background color */
+}

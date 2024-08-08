@@ -1,0 +1,29 @@
+
+<div class="d-flex justify-content-between" style="background-color: antiquewhite;" >
+  <h1>Product-table-List</h1> 
+<div class="d-flex justify-content-end">
+<div class="input-group me-2">
+  <div class="form-outline" data-mdb-input-init>
+    <input type="search" placeholder="Search" class="form-control" style="margin-top: 10px;" [(ngModel)]="searchValue" (ngModelChange)="searchText()" />
+  </div>
+  
+</div> 
+  <i-feather class="icon me-2" name="settings" style="cursor: pointer; color: #0033ff;    margin-top: 20px;  " (click)="clickOnSetting() "></i-feather> 
+  <i-feather name="plus-circle" style="cursor: pointer; color: #0033ff ;   margin-top: 20px"(click)="addItems(0)"></i-feather>
+</div>
+</div>
+
+<div>
+  <app-table
+  
+    [colDefs]="colDefs"
+    [rowData]="rowData"
+    [gridOptions]="gridOptions"
+    [panelOpen]="panelOpen"
+  ></app-table>
+</div>
+<div class="d-flex justify-content-between" style="margin-top: 20px;">
+  <button class="button" (click)="back()">Back</button>
+  <button class="button text-right">Set Data Model</button>
+</div>
+

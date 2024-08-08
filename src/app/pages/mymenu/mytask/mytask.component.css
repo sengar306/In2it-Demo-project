@@ -1,0 +1,88 @@
+.card-container {
+    display: flex;
+}
+
+.card {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin: 10px;
+    background-color: rgb(175, 57, 57);
+}
+
+.common-form{
+    
+    text-align: center;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+
+}
+.form-input{
+height: 35px;
+margin-bottom: 20px;
+padding-left: 10px;
+border: 1px solid rgb(128, 128, 128);
+color:rgb(128, 128, 128);
+}
+
+
+.form-button{
+height: 35px;
+border: 1px solid rgb(128, 128, 128);
+cursor: pointer;
+
+
+}
+.product{
+color:green;
+}
+.add-product{
+text-align: center;
+}
+h1{
+color:rgb(128, 128, 128);
+}
+.task-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .add-task-button {
+    margin-left: auto; /* Pushes the button to the right */
+  }
+  .toggle-container {
+     display: flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+  
+  .content {
+    flex-grow: 1;
+  }
+  
+  .add-product {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .toggle-button {
+    padding: 10px;
+  }
+  button{
+    background-color: bisque;
+  }
+  .invalid input.form-input {
+    border: 1px solid red;
+  }
+  
+  .form-text {
+    color: red;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .form-input {
+    margin-bottom: 10px; /* Adjust this value to your preference */
+  }

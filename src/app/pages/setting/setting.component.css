@@ -1,0 +1,14 @@
+input.ng-invalid.ng-touched{
+    border: red 1px solid;
+ 
+
+}
+input{
+    margin-left: 62px;
+}
+/* .vivek{
+    background-color: orange;
+} */
+ .myClass{
+    background-color: blue;
+ }

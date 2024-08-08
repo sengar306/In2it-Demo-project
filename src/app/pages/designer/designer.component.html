@@ -1,0 +1,78 @@
+<div style="width: 100%">
+  <div
+    id="chartdiv"
+    style="width: 100%; height: 500px; background-color: blanchedalmond"
+  ></div>
+
+  <div class="row">
+    <div class="column">
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">Via Source</h5>
+          <div id="pieChart" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">Certainity</h5>
+          <div id="yChart" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+    <div class="column" style="width: 40%">
+      <h2>Sale List</h2>
+      <div class="search-container">
+        <input type="search" placeholder="Search" aria-label="Search" />
+      </div>
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th><input type="checkbox" /></th>
+              <th>ID</th>
+              <th>Stage</th>
+              <th>Status</th>
+              <th>ACC..</th>
+              <th>Source..</th>
+              <th>pro...</th>
+              <th>rec..</th>
+              <th>acess..</th>
+              <th>exis..</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of data1">
+              <th><input type="checkbox" /></th>
+              <th>{{ item.ID }}</th>
+              <th>{{ item.Stage }}</th>
+              <th>{{ item.Status }}</th>
+              <th>{{ item.ACC }}</th>
+              <th>{{ item.Source }}</th>
+              <th>{{ item.pro }}</th>
+              <th>{{ item.rec }}</th>
+              <th>{{ item.acess }}</th>
+              <th>{{ item.exis }}</th>
+
+              <!-- Add more rows as needed -->
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="column">
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <h5 class="card-title" style="text-align: center">sales Funnel</h5>
+          <div id="funnelChart" style="width: 200%; height: 500px"></div>
+        </div>
+      </div>
+      <div class="card" style="width: 100%">
+        <div class="card-body">
+          <h5 class="card-title">Sales request per variant</h5>
+          <div id="dobnutchart" style="width: 100%; height: 500px"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

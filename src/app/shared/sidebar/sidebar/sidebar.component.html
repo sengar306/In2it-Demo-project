@@ -1,0 +1,186 @@
+<div></div>
+<div class="container-fluid">
+  <div class="row flex-nowrap">
+    <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-dark">
+      <div
+        class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+      >
+        <ul
+          class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+          id="menu"
+        >
+          <li>
+            <i class="fs-4 bi-table"></i>
+            <span class="ms-1 d-none d-sm-inline">MyMenu</span>
+          </li>
+          <li>
+            <a
+              routerLink="/menu/mytask"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('Mymenu', 'Mytask')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="user"></i-feather>MyTask</span
+              ></a
+            >
+          </li>
+
+          <li>
+            <a
+              routerLink="/menu/myteamworks"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('Mymenu', 'Myteam')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="users"></i-feather>My Team Work</span
+              ></a
+            >
+          </li>
+          <li>
+            <i class="fs-4 bi-table"></i>
+            <span class="ms-1 d-none d-sm-inline">My Organization</span>
+          </li>
+          <li>
+            <a
+              routerLink="/organization/organization"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('Org', 'All organizarion')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="cloud-rain"></i-feather>Organization</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/contact"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('org', 'contcat')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="phone-incoming"></i-feather>contact</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/solutionarea"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('org', 'solution area')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="cloud-rain"></i-feather>Solution Area</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/process"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('org', 'process')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="layers"></i-feather>process</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/workflow"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('org', 'workflow')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="trending-down"></i-feather>workflow</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/humantask"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('org', 'Huamn task')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="meh"></i-feather>Human Task</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/workflowexecution"
+              class="nav-link px-0 align-middle"
+              (click)="headerNav('org', 'work flow execution')"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="corner-down-left"></i-feather>workflow
+                Execution</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/organization/schdulelist"
+              class="nav-link px-0 align-middle"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline"
+                ><i-feather name="clock"></i-feather>Schedule List</span
+              ></a
+            >
+          </li>
+          <li>
+            <a
+              routerLink="/designer/designer"
+              class="nav-link px-0 align-middle"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span
+                class="ms-1 d-none d-sm-inline"
+                (click)="headerNav('', 'Designer')"
+                >Designer</span
+              ></a
+            >
+          </li>
+          <i class="fs-4 bi-table"></i>
+          <span
+            class="ms-1 d-none d-sm-inline"
+            (click)="headerNav('Product', 'Product')"
+            >Products</span
+          >
+          <li>
+            <a
+              routerLink="/Product/products"
+              class="nav-link px-0 align-middle"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline">Products</span></a
+            >
+          </li>
+
+          <li>
+            <a
+              routerLink="/settings/setting"
+              class="nav-link px-0 align-middle"
+            >
+              <i class="fs-4 bi-table"></i>
+              <span class="ms-1 d-none d-sm-inline">Setting</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col py-3">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FeatherModule } from 'angular-feather';
+import {
+  AlignJustify,
+  Briefcase,
+  CheckCircle,
+  Circle,
+  Clock,
+  CloudRain,
+  CornerDownLeft,
+  Delete,
+  Edit,
+  Eye,
+  EyeOff,
+  Home,
+  Layers,
+  Meh,
+  Menu,
+  PhoneIncoming,
+  Plus,
+  PlusCircle,
+  Search,
+  Settings,
+  Share2,
+  Star,
+  Trash,
+  Trash2,
+  TrendingDown,
+  Upload,
+  User,
+  UserCheck,
+  Users,
+  XCircle,
+} from 'angular-feather/icons';
+
+const icons = {
+  Menu,
+  UserCheck,
+  AlignJustify,
+  Clock,
+  Star,
+  Home,
+  User,
+  Users,
+  CloudRain,
+  Layers,
+  TrendingDown,
+  Meh,
+  CornerDownLeft,
+  Delete,
+  Edit,
+  Circle,
+  Trash,
+  Trash2,
+  PhoneIncoming,
+  Share2,
+  Plus,
+  Briefcase,
+  Upload,
+  XCircle,
+  CheckCircle,
+  Settings,
+  Eye,
+  EyeOff,PlusCircle,Search  
+};
+
+@NgModule({
+  declarations: [],
+  imports: [CommonModule, FeatherModule.pick(icons)],
+  exports: [FeatherModule],
+})
+export class IconsModule {}

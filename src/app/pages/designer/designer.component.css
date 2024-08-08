@@ -1,0 +1,53 @@
+.row {
+    display: flex; /* Use flexbox to arrange columns */
+    justify-content: space-between; /* Distribute space between columns */
+    width: 100%; /* Full width of the container */
+    margin-top: 15px;
+  }
+  .column {
+    width: 30%; /* Adjust width of columns as needed */
+    background-color: #f2f2f2; /* Just for visibility */
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in width calculation */
+    border:  solid #ddd; /* Just for visibility */
+  }
+  h3 {
+    text-align: center; /* Align the text to the center */
+}
+hr {
+  border: none; /* Remove default border */
+  height: 2px; /* Set the height of the line */
+  background-color: rgb(2, 2, 2); /* Set the color of the line */
+}
+.card{
+  margin: 6px;
+  background-color: blanchedalmond;
+}
+.table-container {
+  width:100%;/* Adjust as needed */
+  height: 100%; /* Adjust as needed */
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* Optional: Add styling for the table */
+table {
+  width: auto;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 20px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.search-container {
+  display: flex;
+  justify-content: flex-end; /* Aligns items to the right */
+  width: 100%; /* Optionally adjust width */
+}
+
+.search-container input[type="search"] {
+  width: 30%; /* Adjust width as needed */
+  margin: 10px;
+}

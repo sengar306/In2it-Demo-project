@@ -1,0 +1,168 @@
+<nav class="navbar navbar-expand-lg bg-body- h-40">
+  <div class="container-fluid" style="background-color: rgb(158, 129, 129)">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active text-blue" aria-current="page" href="#"
+            ><i-feather name="plus"></i-feather>New</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-blue" href="#"
+            ><i-feather name="briefcase"></i-feather>Add to marketing list</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-blue" href="#">
+            <i-feather name="share-2"></i-feather>Share
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-blue" aria-disabled="true" href="#">Import</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div>
+  <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-tabs">
+    <li *ngFor="let org of data; let i = index" [ngbNavItem]="org.id">
+      <a ngbNavLink>
+        {{ org.organization }}
+        <span
+          *ngIf="org.id > 0"
+          class="btn-close ms-3 fw-light"
+          (click)="org.id > 0 ? close($event, i) : ''"
+        ></span>
+      </a>
+      <ng-template *ngIf="org.id === 0; elseBlock" ngbNavContent>
+        <div class="container-fluid">
+          <div class="row flex-nowrap">
+            <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-secondary">
+              <div
+                class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100"
+              >
+                <ul
+                  class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start"
+                  id="menu"
+                >
+                  <li>
+                    <i class="fs-4 bi-table"></i>
+                    <span class="ms-1 d-none d-sm-inline">Lists</span>
+                  </li>
+                  <li>
+                    <a (click)="showAllData()" yy>
+                      <i class="fs-4 bi-table"></i>
+                      <span class="ms-1 d-none d-sm-inline"
+                        ><h2>All organization</h2></span
+                      ></a
+                    >
+                  </li>
+
+                  <li>
+                    <a class="nav-link px-0 align-middle">
+                      <i class="fs-4 bi-table"></i>
+                      <span class="ms-1 d-none d-sm-inline">
+                        <input
+                          class="form-control me-2"
+                          type="search"
+                          placeholder="Search"
+                          aria-label="Search" /></span
+                    ></a>
+                  </li>
+                  <li>
+                    <i class="fs-4 bi-table"></i>
+                    <span class="ms-1 d-none d-sm-inline"
+                     ><h2>
+                        <a (click)="customerType()">Customer</a>
+                      </h2></span
+                    >
+                  </li>
+
+                  <li>
+                    <i class="fs-4 bi-table"></i>
+                    <span class="ms-1 d-none d-sm-inline"
+                      ><a (click)="noncustomerType()"
+                        ><h2>Non-Customer</h2></a
+                      ></span
+                    >
+                  </li> 
+                </ul>
+              </div>
+            </div>
+            <div class="col py-3">
+              <div class="col-md-12">
+                <div class="d-flex justify-content-between align-items-right">
+                  <h1>All Organizations List</h1>
+                  <div class="search-container">
+                    <input
+                      type="text"
+                      placeholder="Search..."
+                      class="search-bar"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <div> <app-table [colDefs]="colDefs" [rowData]="rowData" [gridOptions]="gridOptions" ></app-table></div>
+                </div>
+<!-- 
+                <div class="content">
+                  <div style="overflow-x: auto"></div>
+                  <table
+                    style="width: 100%; border-collapse: collapse"
+                    class="table"
+                  >
+                    <thead>
+                      <tr>
+                        <th scope="col">Organization</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">industry</th>
+                        <th scope="col">onboarding</th>
+                        <th scope="col">related_org</th>
+                        <th scope="col">products</th>
+                        <th scope="col">email</th>
+                        <th scope="col">phone</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let item of filteredOrganization">
+                        <th scope="col">
+                          <a (click)="add(item.id,item)">{{
+                            item.organization
+                          }}</a>
+                        </th>
+                        <th scope="col">{{ item.type }}</th>
+                        <th scope="col">{{ item.industry }}</th>
+                        <th scope="col">{{ item.onboarding }}</th>
+                        <th scope="col">{{ item.related_orgs }}</th>
+                        <th scope="col">{{ item.products }}</th>
+                        <th scope="col">{{ item.email }}</th>
+                        <th scope="col">{{ item.phone }}</th>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+      <ng-template #elseBlock ngbNavContent="">
+        <app-org-detail [inputData]="org"></app-org-detail>
+      </ng-template>
+    </li>
+  </ul>
+
+  <div [ngbNavOutlet]="nav" class="mt-2"></div>
+</div>

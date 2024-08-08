@@ -1,0 +1,6 @@
+<p *ngIf="!params.data.edit && params.colDef.field=='description.value' && !params.data.addMode"  >{{params.data.description.value}}</p>
+<p *ngIf="!params.data.edit &&  params.colDef.field=='table_name.value' && !params.data.addMode">{{ params.data.table_name.value}}</p>
+<input *ngIf="params.data.edit && params.colDef.field=='table_name.value'" type="text" [(ngModel)]="params.data.updatedData.table_name.value">
+<input *ngIf="params.data.edit && params.colDef.field=='description.value'" type="text" [(ngModel)]="params.data.updatedData.description.value">
+<input *ngIf="params.data.addMode && params.colDef.field=='table_name.value'" type="text" [(ngModel)]="params.data.updatedData.table_name.value">
+<input *ngIf="params.data.addMode && params.colDef.field=='description.value'" type="text" [(ngModel)]="params.data.updatedData.description.value">
