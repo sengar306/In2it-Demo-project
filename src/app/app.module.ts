@@ -60,8 +60,7 @@ import { ProductListModule } from './pages/product-list/product-list.module';
     AgGridModule,
     SharedModule,
     HttpClientModule, 
-    ProductListModule 
-
+    ProductListModule ,
 
   
   

@@ -15,37 +15,30 @@ import { NgbCollapseModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { OrgDetailComponent } from './organizations/org-detail/org-detail.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {   AgGridModule } from 'ag-grid-angular';
+import { AgGridModule } from 'ag-grid-angular';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { SettingComponent } from '../setting/setting.component';
 import { TestDirectiveDirective } from 'src/app/directive/test-directive.directive';
-
-
-
-
+import { NgWizardModule, NgWizardConfig, THEME } from 'ng-wizard';
+const ngWizardConfig: NgWizardConfig = {
+  theme: THEME.default,
+};
 @NgModule({
   declarations: [
     ProcessComponent,
     WorkflowComponent,
+
     HumantaskComponent,
     WorkflowsexecutionComponent,
     SolutionareaComponent,
     OrganizationsComponent,
     ContactsComponent,
-    OrgDetailComponent,   
+    OrgDetailComponent,
     SettingComponent,
-    TestDirectiveDirective
-
-   
-    
-    
-   
-  ],providers:[
-
-
+    TestDirectiveDirective,
   ],
+  providers: [],
   imports: [
-
     CommonModule,
     MyorganizationRoutingModule,
     IconsModule,
@@ -54,8 +47,9 @@ import { TestDirectiveDirective } from 'src/app/directive/test-directive.directi
     FormsModule,
     ReactiveFormsModule,
     AgGridModule,
-    SharedModule,
 
-  ]
+    SharedModule,
+    NgWizardModule.forRoot(ngWizardConfig),
+  ],
 })
-export class MyorganizationModule { }
+export class MyorganizationModule {}

@@ -1,71 +1,54 @@
-<form [formGroup]="myform" (ngSubmit)="submit()">
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">Email address</label>
-    <input
-      type="email"
-      class="form-control"
-      id="exampleInputEmail1"
-      aria-describedby="emailHelp"
-      formControlName="email"
-    />
-    <small
-      class="text-danger"
-      *ngIf="!myform.get('email')?.valid && myform.get('email')?.touched"
-    >
-      enter the valid email</small
-    >
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">username</label>
-    <input
-      type="text"
-      class="form-control"
-      id="username "
-      name="username"
-      formControlName="username"
-    />
-    <!-- <span *ngIf="myform.get('username')?.touched && 
-    myform.get('username')hasError('required')">this is required</span>
-    <span *ngIf="myform.get('username')?.touched && 
-    myform.get('username')hasError('nameisnotallowed')">this isnameisnotallowed required</span> -->
-    <!-- <span *ngIf="myform.get('username')?.errors['required']"> this is required</span> -->
-    <!-- <span
-      *ngIf="
-        myform.get('username')?.hasError('required') &&
-        myform.get('username')?.touched
-      "
-      >Username is required.</span
-    >   
-    <span *ngIf="myform.get('username')?.hasError('nameisnotallowed')"
-      >Username is not allowed.</span
-    > -->
-   <span *ngIf="myform.get('username')?.['errors']?.['nameisnotallowed'] ">USER already exist</span>
-   <span *ngIf="myform.get('username')?.['errors']?.['required'] && myform.get('username')?.touched ">Mandatory field</span>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="exampleInputPassword1"
-      formControlName="password"
-    />
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <div>
-    <!-- <button (click)="onAddskill()" class="btn btn-primary">Submit</button> -->
-    <!-- <div
-      formArrayName="skills"
-      *ngFor="let i of myform.get('skills')?.controls; let i = index"
-    >
-      <div>
-        <input [formControlName]="i" type="text" />
-      </div>
-    </div> -->
-  </div>
+<ng-wizard [config]="config" (stepChanged)="stepChanged($event)">
+  <ng-wizard-step
+    [title]="'Step 1'"
+    [description]="'Step 1 description'"
+    [canEnter]="isValidTypeBoolean"
+    [canExit]="isValidFunctionReturnsBoolean.bind(this)"
+  >
+    <span>Step 1 content</span>
+  </ng-wizard-step>
 
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+  <ng-wizard-step
+    [title]="'Step 2'"
+    [description]="'Step 2 description'"
+    [state]="stepStates.disabled"
+  >
+    <span>Step 2 content</span>
+  </ng-wizard-step>
+
+  <ng-wizard-step
+    [title]="'Step 3'"
+    [description]="'Step 3 description'"
+    [canEnter]="isValidFunctionReturnsObservable.bind(this)"
+    [canExit]="isValidFunctionReturnsBoolean.bind(this)"
+  >
+    <span>Step 3 content</span>
+  </ng-wizard-step>
+
+  <ng-wizard-step [title]="'Step 4'" [description]="'Step 4 description'">
+    <span>Step 4 content</span>
+  </ng-wizard-step>
+
+  <ng-wizard-step
+    [title]="'Step 5'"
+    [description]="'Step 5 description'"
+    [state]="stepStates.hidden"
+  >
+    <span>Step 5 content</span>
+  </ng-wizard-step>
+
+  <ng-wizard-step
+    [title]="'Step 6'"
+    [description]="'Step 6 description'"
+    [state]="stepStates.disabled"
+  >
+    <span>Step 6 content</span>
+  </ng-wizard-step>
+
+  <ng-wizard-step [title]="'Step 7'" [description]="'Step 7 description'">
+    <span>Step 7 content</span>
+  </ng-wizard-step>
+  <ng-wizard-step [title]="'Step 8'" [description]="'Step 8 description'">
+    <span>Step 8 content</span>
+  </ng-wizard-step>
+</ng-wizard>

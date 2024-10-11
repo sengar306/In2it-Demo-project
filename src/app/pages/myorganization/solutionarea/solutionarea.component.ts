@@ -1,6 +1,13 @@
-import {   Component, ElementRef, ViewChild,} from '@angular/core';
-import {  AbstractControl, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
-
+import { Component } from '@angular/core';
+import {
+  NgWizardConfig,
+  NgWizardService,
+  STEP_STATE,
+  StepChangedArgs,
+  StepValidationArgs,
+  THEME,
+} from 'ng-wizard';
+import { of } from 'rxjs';
 
 // import { ColDef, GridOptions , GridApi} from 'ag-grid-community';
 
@@ -12,78 +19,61 @@ import {  AbstractControl, FormArray, FormControl, FormGroup, Validators } from 
   templateUrl: './solutionarea.component.html',
   styleUrls: ['./solutionarea.component.css'],
 })
-export class SolutionareaComponent  {
-  message:any
-  @ViewChild('para') child!:ElementRef
-  uxtrends=['vivek','shiva']
-   myform!:FormGroup
- ngOnInit(): void {
-   this.myform=new FormGroup({
-    email:new FormControl(null,this.asynvalidator),
-    username:new FormControl(null,[Validators.required,this.naNames.bind(this)]),
-    password:new FormControl(null,[Validators.required]),
-    skills:new FormArray([])
-   })
-   
- }
- submit(){
-    console.log(this.myform.controls?.['username']?.['errors']?.['nameisnotallowed'])
-    console.log(this.myform)
-// console.log(this.myform.get('username')?.errors['nameisnotallowed'])
-    
- }
+export class SolutionareaComponent {
+  stepStates = {
+    normal: STEP_STATE.normal,
+    disabled: STEP_STATE.disabled,
+    error: STEP_STATE.error,
+    hidden: STEP_STATE.hidden,
+  };
 
+  config: NgWizardConfig = {
+    selected: 0,
+    theme: THEME.default,
+    toolbarSettings: {
+      toolbarExtraButtons: [
+        {
+          text: 'Finish',
+          class: 'btn btn-info',
+          event: () => {
+            alert('Finished!!!');
+          },
+        },
+      ],
+    },
+  };
 
-//   onAddskill()
-//  {
-//   const control= new FormControl(null, Validators.required);
-//  (<FormArray>this.myform.get('skills')).push(control)
-//  }
+  constructor(private ngWizardService: NgWizardService) {}
 
-  
+  ngOnInit() {}
 
-
-
-naNames(formcontrol:FormControl):{[s:string]:boolean}
-{
-  if(this.uxtrends.indexOf(formcontrol.value)!== -1)
-
-  {
-     return{'nameisnotallowed':true}
+  showPreviousStep(_event: Event) {
+    this.ngWizardService.previous();
   }
-  return {}
 
+  showNextStep(_event?: Event) {
+    this.ngWizardService.next();
+  }
+
+  resetWizard(_event?: Event) {
+    this.ngWizardService.reset();
+  }
+
+  setTheme(theme: THEME) {
+    this.ngWizardService.theme(theme);
+  }
+
+  stepChanged(args: StepChangedArgs) {
+    console.log(args.step);
+  }
+
+  isValidTypeBoolean: boolean = true;
+
+  isValidFunctionReturnsBoolean(_args: StepValidationArgs) {
+    return true;
+  }
+
+  isValidFunctionReturnsObservable(_args: StepValidationArgs) {
+    return of(true);
+  }
 }
-  
-asynvalidator(control:AbstractControl):Promise<any>{
-  let promise=new Promise((resolve)=>{
-    if(control.value=='test@gmail.com')
-    {
-      resolve({resolve:true})
-    }
-    else{
-      resolve (null)
-    }
-    
-  })
-  return promise
-}
-
-}
-
-
-// export function emailAsyncValidator(): AsyncValidatorFn {
-//   return (control: AbstractControl): Observable<{ [key: string]: boolean } | null> => {
-//     return new Observable(observer => {
-//       setTimeout(() => {
-//         if (control.value === 'test@gmail.com') {
-//           observer.next({ 'emailTaken': true });
-//         } else {
-//           observer.next(null);
-//         }
-//         observer.complete();
-//       }, 2000); // Simulated async delay
-//     })
-    
-  
-//   };
